@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<gradient android:startColor="@color/tb_media_picker_accent" android:endColor="@color/tb_media_picker_accent"></gradient>
+</shape>

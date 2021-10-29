@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rankback"
+    android:paddingLeft="10dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/grpImage"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:clickable="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_corner_radius_bottom_left="30dp"
+        app:riv_corner_radius_bottom_right="30dp"
+        app:riv_corner_radius_top_left="30dp"
+        app:riv_corner_radius_top_right="30dp"
+        app:riv_mutate_background="true" />
+
+    <TextView
+        android:id="@+id/grpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="2dp"
+        android:maxLength="16"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/grpImage"
+        app:layout_constraintStart_toEndOf="@+id/grpImage"
+        app:layout_constraintTop_toTopOf="@+id/grpImage"
+        app:layout_constraintVertical_bias="0.484" />
+
+    <TextView
+        android:id="@+id/lastMsgSender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/grpName"
+        app:layout_constraintTop_toBottomOf="@+id/grpName" />
+
+    <TextView
+        android:id="@+id/grpLastmsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/lastMsgSender"
+        app:layout_constraintTop_toTopOf="@+id/lastMsgSender" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grpName"
+        app:srcCompat="@drawable/tb_image_preview_ic_done_black_24dp" />
+
+    <TextView
+        android:id="@+id/grpLastMsgTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        app:layout_constraintStart_toStartOf="@+id/lastMsgSender"
+        app:layout_constraintTop_toBottomOf="@+id/grpLastmsg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

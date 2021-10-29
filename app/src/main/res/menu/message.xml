@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/mediaBox"
+    android:title="Media,contacts">
+</item>
+    <item
+        android:id="@+id/call"
+        android:icon="@drawable/ic_baseline_add_ic_call_24"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/ic_baseline_video_call_24"
+        app:showAsAction="always"></item>
+    <item android:id="@+id/mute"
+        android:title="Mute Notifications"></item>
+    <item android:id="@+id/clear"
+        android:title="Clear Chats">
+    </item>
+    <item android:id="@+id/backGround"
+        android:title="WallPaper">
+    </item>
+    <item android:id="@+id/search"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_baseline_search_24"></item>
+</menu>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SetUpProfile">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="358dp"
+        android:layout_height="368dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/black"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <LinearLayout
+            android:layout_width="344dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="216dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center|center_horizontal"
+                android:text="Update your Information"
+                android:textColor="#651573"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="309dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/use"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/lightblack" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="310dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/use"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/lightblack" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="310dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/use"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/lightblack" />
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="310dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/use"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/lightblack" />
+
+            <Button
+                android:id="@+id/update_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Update"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/userImage"
+        android:layout_width="168dp"
+        android:layout_height="150dp"
+        android:clickable="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/user"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101"
+        app:riv_border_color="#333333"
+        app:riv_corner_radius="10dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

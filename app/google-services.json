@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "867701831462",
+    "firebase_url": "https://quizing-834de-default-rtdb.firebaseio.com",
+    "project_id": "quizing-834de",
+    "storage_bucket": "quizing-834de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867701831462:android:ebbfeab938d36a30dff3e7",
+        "android_client_info": {
+          "package_name": "com.company.MyGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867701831462-jtcttcoh1bvge31iq1u7e34rif30j4t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXcVFNZwKEYSiP-o9UPbn40ZzOQx6VMMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867701831462-jtcttcoh1bvge31iq1u7e34rif30j4t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867701831462:android:dcf0fd6a274e72b9dff3e7",
+        "android_client_info": {
+          "package_name": "com.example.whatsup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867701831462-jtcttcoh1bvge31iq1u7e34rif30j4t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXcVFNZwKEYSiP-o9UPbn40ZzOQx6VMMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867701831462-jtcttcoh1bvge31iq1u7e34rif30j4t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
