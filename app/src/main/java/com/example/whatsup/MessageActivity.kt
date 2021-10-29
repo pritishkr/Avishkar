@@ -397,5 +397,6 @@ class MessageActivity : AppCompatActivity() {
             }
         }
         return true
+
     }
 }
