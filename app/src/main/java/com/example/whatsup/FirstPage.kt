@@ -139,7 +139,7 @@ permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permis
         searchFriend= arrayListOf()
 
         text?.let {
-            groupsFragment.grpList.forEach { message ->
+            groupsFragment.grpList!!.forEach { message ->
                 if (message.GroupName?.contains(text, true) == true ) {
                     searchGroup.add(message)
                 }

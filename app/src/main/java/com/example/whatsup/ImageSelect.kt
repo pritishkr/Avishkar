@@ -15,8 +15,10 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_image_select.*
 import kotlin.random.Random
 
-class ImageSelect : AppCompatActivity() {
-    private var selectedImage: Uri?=null
+ class ImageSelect : AppCompatActivity() {
+    var selectedImage: Uri?=null
+     var caption:String?=null
+
     private lateinit var binding:ActivityImageSelectBinding
     private lateinit var database: DatabaseReference
     private lateinit var storage: StorageReference
@@ -34,10 +36,12 @@ class ImageSelect : AppCompatActivity() {
         var rand=database.push().key.toString()
         storage=FirebaseStorage.getInstance().getReference().child(senderRoom).child(rand.toString())
         binding.finalImageSendBtn.setOnClickListener {
+            caption=binding.ImageCaption.text.toString()
             var intent=Intent()
-            intent.putExtra("SelectedImage",selectedImage)
-            intent.putExtra("Caption",binding.ImageCaption.text.toString())
+            intent.putExtra("SelectedImage",selectedImage.toString())
+            intent.putExtra("ImageCaption",caption.toString())
             setResult(RESULT_OK,intent)
+            Toast.makeText(this,selectedImage.toString(),Toast.LENGTH_SHORT).show()
             finish()
 //            if(selectedImage!=null){
 //                storage.putFile(selectedImage!!).addOnCompleteListener(OnCompleteListener {

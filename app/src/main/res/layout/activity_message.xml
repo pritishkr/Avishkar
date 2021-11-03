@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
     android:background="@drawable/img"
+    android:focusable="true"
     tools:context=".MessageActivity"
     tools:menu="@menu/message">
 
@@ -41,33 +41,34 @@
             app:riv_corner_radius="10dip"
             app:riv_mutate_background="true"
             app:riv_oval="true" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="Name"
-                android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/onlineStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="Offline"
-                android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -81,21 +82,20 @@
         android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="322dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:background="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -114,8 +114,9 @@
                 android:background="@color/white"
                 android:ems="10"
                 android:hint="Type message here.."
-                android:inputType="textPersonName"
+                android:inputType="textCapSentences|textMultiLine"
                 android:shadowColor="@color/ltBlack"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textColorHint="@color/vltBlack"
                 android:textSize="20sp" />
@@ -123,25 +124,17 @@
             <ImageView
                 android:id="@+id/fileSendBtn"
                 android:layout_width="37dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_attach_file_24" />
 
-            <ImageView
-                android:id="@+id/msgSentBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_send"
-                app:tint="@color/black" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 
     <SearchView
         android:id="@+id/searchMessage"
@@ -151,10 +144,39 @@
         android:enabled="true"
         android:queryHint="Search Here..."
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.076" ></SearchView>
+        app:layout_constraintVertical_bias="0.076"></SearchView>
+
+
+    <ImageView
+        android:id="@+id/msgSentBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintTop_toTopOf="@+id/cardView3"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:visibility="gone"
+        app:tint="@color/teal_200" />
+    <ImageView
+        android:id="@+id/voiceMsg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintTop_toTopOf="@+id/cardView3"
+        android:src="@drawable/ic_baseline_mic_24"
+        app:tint="@color/teal_200" />
 </androidx.constraintlayout.widget.ConstraintLayout>

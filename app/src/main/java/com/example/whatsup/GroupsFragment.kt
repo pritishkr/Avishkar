@@ -23,8 +23,8 @@ class GroupsFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var database2: DatabaseReference
     private lateinit var fauth: FirebaseAuth
-     lateinit var grpList:ArrayList<Group>
-     lateinit var grpAdapter:GroupAdapter
+    lateinit var grpList:ArrayList<Group>
+    lateinit var grpAdapter:GroupAdapter
     private lateinit var friends:ArrayList<String>
     private lateinit var dialog: ProgressDialog
     private lateinit var timer: CountDownTimer
@@ -41,7 +41,8 @@ class GroupsFragment : Fragment() {
         dialog.setCancelable(false)
         dialog.show()
         grpList= arrayListOf()
-        grpAdapter= context?.let { GroupAdapter(it,grpList) }!!
+        grpList.clear()
+        grpAdapter= context?.let { GroupAdapter(it, grpList!!) }!!
         binding.grpsView.adapter=grpAdapter
         binding.grpsView.layoutManager= LinearLayoutManager(context)
         database.child("Profile").child(fauth.currentUser!!.uid).child("Group").addValueEventListener(object :
@@ -65,7 +66,7 @@ class GroupsFragment : Fragment() {
                     }
                     Handler().postDelayed({
                         grpAdapter.notifyDataSetChanged()
-                        Toast.makeText(context,grpList.size.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, grpList.size.toString(), Toast.LENGTH_SHORT).show()
                     }, 1000)
                 }
 

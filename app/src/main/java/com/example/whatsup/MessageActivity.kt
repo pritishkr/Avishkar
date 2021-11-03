@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -20,6 +21,9 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -110,7 +114,7 @@ class MessageActivity : AppCompatActivity() {
             binding.title.text=receiverName
 
         }
-        permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO)
+        permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         binding.toolbar.setOnClickListener{
             var intent=Intent(this,friendProfile::class.java)
             intent.putExtra("uid",receiverId)
@@ -138,10 +142,46 @@ class MessageActivity : AppCompatActivity() {
                 Toast.makeText(this@MessageActivity,"No Message sent",Toast.LENGTH_SHORT).show()
             }
         })
+        val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                if (intent != null) {
+                  selectedImage= intent.getStringExtra("SelectedImage").toString().toUri()
+                    caption=intent.getStringExtra("ImageCaption").toString()
+                    Toast.makeText(this,"Hello"+caption.toString(),Toast.LENGTH_SHORT).show()
+                    var rand=database.push().key.toString()
+                    storage=FirebaseStorage.getInstance().getReference().child(senderRoom).child(rand.toString())
+                    storage.putFile(selectedImage!!).addOnCompleteListener(OnCompleteListener {
+                        if(it.isSuccessful)
+                        {
+                            storage.downloadUrl.addOnSuccessListener {
+                                val message = Message(
+                                    it.toString(),
+                                    caption,
+                                    senderId,
+                                    receiverName,
+                                    System.currentTimeMillis().toString(),
+                                    false,
+                                    rand
+                                )
+                                database2.child("Chats").child(senderRoom).child("messages")
+                                    .child(rand).setValue(message).addOnSuccessListener {
+                                        Toast.makeText(this,"Message sent",Toast.LENGTH_SHORT).show()
+////                                database.child("Chats").child(recieverRoom).child(rand).setValue(message).addOnSuccessListener {
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+        }
         binding.fileSendBtn.setOnClickListener {
-            var intent=Intent(this,ImageSelect::class.java)
-            intent.putExtra("senderRoom",senderRoom)
-            startActivityForResult(intent,1)
+            startForResult.launch(Intent(this,ImageSelect::class.java))
+
+//            getAction.launch(Intent(this,ImageSelect::class.java))
+//            var intent=Intent(this,ImageSelect::class.java)
+//            intent.putExtra("senderRoom",senderRoom)
+//            startActivityForResult(intent,1)
         }
         binding.msgBox.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -211,17 +251,16 @@ class MessageActivity : AppCompatActivity() {
             }
             R.id.video -> {
                 if(isPermissionGranted()){
-                    var intent=Intent(this@MessageActivity,VideoCall::class.java)
-                    intent.putExtra("FriendUid",receiverId)
-                    intent.putExtra("FriendImage",image)
-                    intent.putExtra("FriendName",receiverName)
+                    var intent=Intent(this@MessageActivity,data::class.java)
+//                    intent.putExtra("FriendUid",receiverId)
+//                    intent.putExtra("FriendImage",image)
+//                    intent.putExtra("FriendName",receiverName)
                     startActivity(intent)
+
                 }
                 else{
                     askPermission()
                 }
-
-
                 return true
             }
             R.id.mediaBox -> {
@@ -346,7 +385,7 @@ class MessageActivity : AppCompatActivity() {
         }
     }
 
-    private fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) : Void? {
+     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) : Void? {
         super.onActivityResult(requestCode, resultCode, data)
         Toast.makeText(this,"Activity",Toast.LENGTH_SHORT).show()
         if (requestCode == 1) {
@@ -397,6 +436,5 @@ class MessageActivity : AppCompatActivity() {
             }
         }
         return true
-
     }
 }

@@ -8,11 +8,13 @@ import android.widget.PopupMenu
 import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
+import com.bumptech.glide.Glide
 import com.example.whatsup.databinding.ItemRecieveBinding
 import com.example.whatsup.databinding.ItemSentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_message.*
 import kotlinx.android.synthetic.main.item_recieve.view.*
 import kotlinx.android.synthetic.main.item_sent.view.*
 import java.text.DateFormat
@@ -39,11 +41,26 @@ class messageAdapter (private var context:Context,var msgList:ArrayList<Message>
         clickedMsg?.clear()
         if(holder::class.java==sentViewHolder::class.java){
             val viewHolder=holder as sentViewHolder
+            if(currentMessage.image==null)
+            {
+                holder.itemView.ImageSent.visibility=View.GONE
+            }
+            else {
+                holder.itemView.ImageSent.visibility=View.VISIBLE
+                Glide.with(context)
+                    .load(currentMessage.image)
+                    .override(1000, 1000)
+                    .placeholder(R.drawable.user)
+                    .into(holder.itemView.ImageSent)
+            }
             holder.sentMessage.text=currentMessage.msg
             holder.itemView.msgSentTime.setText(date.format(currentMessage.date.toString().toLong()).toString())
             if(currentMessage.seen.toString().toBoolean())
             {
                 holder.itemView.sendMsg.setColorFilter(R.color.darkBlue)
+            }
+            else{
+                holder.itemView.sendMsg.setColorFilter(R.color.white)
             }
 
             holder.itemView.setOnLongClickListener{
