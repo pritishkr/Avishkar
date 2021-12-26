@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/inviteFriends"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title=" Invite a friend"></item>
+    <item android:id="@+id/searchContact"
+        android:icon="@drawable/search_icon"
+        app:showAsAction="always"
+        android:iconTint="@color/white"
+        android:title="search"></item>
+    <item android:id="@+id/help"
+        android:icon="@drawable/quiz"
+        android:title="Help"></item>
+</menu>

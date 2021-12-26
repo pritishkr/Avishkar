@@ -43,6 +43,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView">
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="530dp"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -52,7 +59,9 @@
         android:background="@color/ltBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchFriendsView"
-        app:menu="@menu/first" />
+        app:menu="@menu/first" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchFriendsView"

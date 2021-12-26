@@ -46,7 +46,6 @@ class StatusShow : AppCompatActivity() {
         Glide.with(this@StatusShow)
             .load(statusUid)
             .override(1000, 1000)
-            .circleCrop()
             .placeholder(R.drawable.user)
             .into(statusShow)
     }

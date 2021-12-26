@@ -114,7 +114,7 @@ class MessageActivity : AppCompatActivity() {
             binding.title.text=receiverName
 
         }
-        permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO,android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_CONTACTS)
         binding.toolbar.setOnClickListener{
             var intent=Intent(this,friendProfile::class.java)
             intent.putExtra("uid",receiverId)
@@ -123,7 +123,7 @@ class MessageActivity : AppCompatActivity() {
             startActivity(intent)
         }
         Toast.makeText(this,receiverName,Toast.LENGTH_SHORT).show()
-        database=FirebaseDatabase.getInstance().getReference().child("Chats").child(senderRoom).child("messages")
+        database=FirebaseDatabase.getInstance().getReference().child("Profile").child(senderId).child("friend").child(receiverId).child("messages")
         database.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 messages.clear()
@@ -164,7 +164,7 @@ class MessageActivity : AppCompatActivity() {
                                     false,
                                     rand
                                 )
-                                database2.child("Chats").child(senderRoom).child("messages")
+                                database2.child("Profile").child(senderId).child("friend").child(receiverId).child("messages")
                                     .child(rand).setValue(message).addOnSuccessListener {
                                         Toast.makeText(this,"Message sent",Toast.LENGTH_SHORT).show()
 ////                                database.child("Chats").child(recieverRoom).child(rand).setValue(message).addOnSuccessListener {
@@ -197,7 +197,6 @@ class MessageActivity : AppCompatActivity() {
                     isTyping=true
                 }
                 timer.cancel()
-                timer= Timer()
                 timer = Timer()
                 timer.schedule(
                     object : TimerTask() {
@@ -214,21 +213,47 @@ class MessageActivity : AppCompatActivity() {
             var typing=it.child(receiverId).value
         }
         binding.msgSentBtn.setOnClickListener {
-            var newMsg=binding.msgBox.text
-            if(newMsg==null){
-                Toast.makeText(this,"Type something",Toast.LENGTH_SHORT).show()
-            }
-            else{
-                var date=Date()
+            var newMsg = binding.msgBox.text
+            if (newMsg == null) {
+                Toast.makeText(this, "Type something", Toast.LENGTH_SHORT).show()
+            } else {
+                var date = Date()
                 binding.msgBox.setText("")
-                var rand=database.push().key
-                var message=Message(null,newMsg.toString().trim(),senderId,receiverName,System.currentTimeMillis().toString(),false,rand)
+                var rand = database.push().key
+                var message = Message(
+                    null,
+                    newMsg.toString().trim(),
+                    senderId,
+                    receiverName,
+                    System.currentTimeMillis().toString(),
+                    false,
+                    rand
+                )
                 if (rand != null) {
-                    database2.child("Chats").child(senderRoom).child("messages").child(rand).setValue(message).addOnSuccessListener {
-                        database2.child("Chats").child(receiverRoom).child("messages").child(rand).setValue(message).addOnSuccessListener{
-                            Toast.makeText(this,"Message Sent",Toast.LENGTH_SHORT).show()
+                    database2.child("Profile").child(senderId).child("friend").child(receiverId).child("messages")
+                        .child(rand).setValue(message).addOnSuccessListener {
+                            database2.child("Profile").child(receiverId).child("friend").child(senderId)
+                                .child("messages")
+                                .child(rand).setValue(message).addOnSuccessListener {
+                                    database2.child("Profile").child(senderId).child("friend").child(receiverId)
+                                        .child("lastMsgTime")
+                                        .setValue(System.currentTimeMillis().toString())
+                                        .addOnSuccessListener {
+                                            database2.child("Chats").child(receiverId)
+                                                .child(senderId)
+                                                .child("lastMsgTime")
+                                                .setValue(System.currentTimeMillis().toString())
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        this,
+                                                        "Message Sent",
+                                                        Toast.LENGTH_SHORT
+                                                    )
+                                                        .show()
+                                                }
+                                        }
+                                }
                         }
-                    }
                 }
             }
         }
@@ -250,18 +275,18 @@ class MessageActivity : AppCompatActivity() {
                 return true
             }
             R.id.video -> {
+                Toast.makeText(applicationContext, "Video", Toast.LENGTH_LONG).show()
                 if(isPermissionGranted()){
                     var intent=Intent(this@MessageActivity,data::class.java)
 //                    intent.putExtra("FriendUid",receiverId)
 //                    intent.putExtra("FriendImage",image)
 //                    intent.putExtra("FriendName",receiverName)
                     startActivity(intent)
-
                 }
                 else{
                     askPermission()
                 }
-                return true
+                return false
             }
             R.id.mediaBox -> {
                 var intent= Intent(this,friendsFragment::class.java)
@@ -279,7 +304,7 @@ class MessageActivity : AppCompatActivity() {
                     .setCancelable(false)
                     .setPositiveButton("Proceed", DialogInterface.OnClickListener {
                             dialog, id ->
-                        database2.child("Chats").child(senderRoom).child("messages").setValue(null).addOnSuccessListener {
+                        database2.child("Profile").child(senderId).child("friend").child(receiverId).child("messages").setValue(null).addOnSuccessListener {
                             Toast.makeText(this,"Chats Clear",Toast.LENGTH_SHORT).show()
                         }
                     })
@@ -408,8 +433,8 @@ class MessageActivity : AppCompatActivity() {
                     if(it.isSuccessful){
                         storage.downloadUrl.addOnSuccessListener {
                             val message=Message(it.toString(),caption,fauth.currentUser!!.uid,fauth.currentUser!!.uid,System.currentTimeMillis().toString(),false,rand)
-                            database.child("Chats").child(senderRoom).child("messages").child(rand).setValue(message).addOnSuccessListener {
-                              database.child("Chats").child(receiverRoom).child(rand).setValue(message).addOnSuccessListener {
+                            database.child("Profile").child(senderId).child("friend").child(receiverId).child("messages").child(rand).setValue(message).addOnSuccessListener {
+                              database.child("Profile").child(receiverId).child("friend").child(senderId).child("messages").child(rand).setValue(message).addOnSuccessListener {
                                 val intent=Intent()
                                 intent.putExtra("SelectedImage",selectedImage)
                                 Toast.makeText(this,"Image Send",Toast.LENGTH_SHORT).show()

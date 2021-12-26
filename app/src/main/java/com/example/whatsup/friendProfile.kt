@@ -30,6 +30,7 @@ class friendProfile : AppCompatActivity() {
     private lateinit var uid:String
     private lateinit var profile:String
     private lateinit var phone:String
+    private lateinit var friend:Profile
     private var value:Int=0
     private val requestCall = 1
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,7 @@ class friendProfile : AppCompatActivity() {
         var name=intent.getStringExtra("name").toString()
         if (uid != null) {
             database.child("Profile").child(uid).get().addOnSuccessListener {
+                 friend= it.getValue(Profile::class.java)!!
                 binding.userAddress.setText(it.child("address").value.toString())
                 binding.userAge.setText(it.child("age").value.toString())
                 binding.userPhone.setText(it.child("phone").value.toString())
@@ -85,7 +87,7 @@ class friendProfile : AppCompatActivity() {
                          }
                         else {
                             database.child("Profile").child(fauth.currentUser!!.uid).child("friend")
-                                .child(uid).setValue(uid).addOnSuccessListener {
+                                .child(uid).setValue(friend).addOnSuccessListener {
                                     Toast.makeText(this, "U are friends ", Toast.LENGTH_SHORT)
                                         .show()
                                 }
@@ -97,6 +99,7 @@ class friendProfile : AppCompatActivity() {
             intent.putExtra("profile",profile)
             intent.putExtra("uid",uid)
             intent.putExtra("name",name)
+            intent.putExtra("phone",phone)
             startActivity(intent)
         }
     }

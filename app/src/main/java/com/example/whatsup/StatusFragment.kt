@@ -20,8 +20,7 @@ class StatusFragment : Fragment() {
     private lateinit var database:DatabaseReference
     private lateinit var fauth:FirebaseAuth
     lateinit var statusAdapter: StatusAdapter
-     lateinit var statusList:ArrayList<Status>
-
+    lateinit var statusList:ArrayList<Status>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,7 +61,6 @@ class StatusFragment : Fragment() {
                var intent=Intent(context,StatusSelect::class.java)
             startActivity(intent)
         }
-
 
 
         return binding.root

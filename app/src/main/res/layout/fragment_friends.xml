@@ -13,8 +13,34 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/row_table" />
+
+    <View
+        android:id="@+id/contactView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/msgboxcircle"
+        app:layout_constraintBottom_toBottomOf="@+id/friendsView"
+        app:layout_constraintEnd_toEndOf="@+id/friendsView" />
+
+
+    <ImageView
+        android:id="@+id/contactBox"
+        android:layout_width="25dp"
+        android:layout_height="30dp"
+        android:src="@android:drawable/stat_notify_chat"
+        app:layout_constraintBottom_toBottomOf="@+id/contactView"
+        app:layout_constraintEnd_toEndOf="@+id/contactView"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="@+id/contactView"
+        app:layout_constraintTop_toTopOf="@+id/contactView"
+        app:layout_constraintVertical_bias="0.485" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

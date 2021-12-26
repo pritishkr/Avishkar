@@ -164,19 +164,18 @@
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="@+id/cardView3"
         app:srcCompat="@android:drawable/ic_menu_send"
-        android:visibility="gone"
         app:tint="@color/teal_200" />
-    <ImageView
-        android:id="@+id/voiceMsg"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toTopOf="@+id/cardView3"
-        android:src="@drawable/ic_baseline_mic_24"
-        app:tint="@color/teal_200" />
+<!--    <ImageView-->
+<!--        android:id="@+id/voiceMsg"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/cardView3"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/cardView3"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/cardView3"-->
+<!--        android:src="@drawable/ic_baseline_mic_24"-->
+<!--        app:tint="@color/teal_200" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

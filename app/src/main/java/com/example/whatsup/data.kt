@@ -3,14 +3,15 @@ package com.example.whatsup
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import android.widget.Toast
 import com.example.whatsup.databinding.ActivityDataBinding
 import kotlinx.android.synthetic.main.activity_data.*
 import java.io.*
-
 class data : AppCompatActivity() {
     private lateinit var binding:ActivityDataBinding
+    private lateinit var folder:File
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityDataBinding.inflate(layoutInflater)
@@ -20,7 +21,7 @@ class data : AppCompatActivity() {
             val data:String = binding.DataName.text.toString()
             val fileOutputStream: FileOutputStream
             try {
-                fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+                fileOutputStream = openFileOutput(file, Context.MODE_APPEND)
                 fileOutputStream.write(data.toByteArray())
             } catch (e: FileNotFoundException){
                 e.printStackTrace()

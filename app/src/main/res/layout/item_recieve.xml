@@ -4,50 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="2dp"
     android:layout_marginRight="60dp"
+    android:layout_marginTop="2dp"
     android:layout_marginBottom="1dp"
-    android:padding="4dp">
+    android:elevation="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="349dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/img"
+        android:foregroundGravity="fill_horizontal"
         app:cardCornerRadius="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/recievebox"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:backgroundTintMode="src_over"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/msgRecieveBox"
+            <ImageView
+                android:id="@+id/ImageSent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:srcCompat="@drawable/transition_background_drawable" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="4dp"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold|italic" />
+                android:layout_gravity="right"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/recievebox"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/msgReceiveTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:gravity="right"
-                android:text="TextView"
-                android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/msgRecieveBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:foregroundGravity="fill_horizontal"
+                    android:gravity="fill|fill_horizontal|left"
+                    android:padding="4dp"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/msgRecieveTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/recieveMsg"
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="8dp"
+                    android:paddingRight="4dp"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/ic_baseline_done_24" />
+            </LinearLayout>
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

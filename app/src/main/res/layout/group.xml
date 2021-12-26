@@ -9,8 +9,8 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/grpImage"
-        android:layout_width="55dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
         android:layout_marginTop="2dp"
         android:clickable="true"
         android:scaleType="fitCenter"
@@ -78,8 +78,9 @@
     <View
         android:id="@+id/view9"
         android:layout_width="wrap_content"
-        android:layout_height="0.5dp"
-        app:layout_constraintStart_toStartOf="@+id/lastMsgSender"
-        app:layout_constraintTop_toBottomOf="@+id/grpLastmsg" />
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lastMsgSender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class friendAdapter(private var context: Context,  var rankList:ArrayList<Profil
             .into(holder.itemView.friendImage)
         database=FirebaseDatabase.getInstance().getReference()
         fauth= FirebaseAuth.getInstance()
-        database.child("Chats").child(fauth.currentUser!!.uid+user.uid).child("messages").limitToLast(1).addValueEventListener(object :ValueEventListener{
+        database.child("Profile").child(fauth.currentUser!!.uid).child("friend").child(user.uid.toString()).child("messages").limitToLast(1).addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.childrenCount.equals(0)){
                     holder.itemView.lastMsg.setText("Tap to chat")

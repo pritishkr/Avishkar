@@ -7,11 +7,13 @@
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/border.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/box.xml" value="0.228125" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/circle.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/msgboxcircle.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/option_unselected.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/rankback.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/recievebox.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/drawable/sentbox.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_bookmark.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_contact_list.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_data.xml" value="0.2" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_finger_print.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_first_page.xml" value="0.23645833333333333" />
@@ -24,6 +26,7 @@
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_image_select.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_image_send.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_inputques.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_location_sharing.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_login.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_main.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_message.xml" value="0.22083333333333333" />
@@ -31,6 +34,7 @@
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_search_friends.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_send_ques.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_set_up_profile.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_sign_up.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_status_select.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_status_show.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/activity_status_upload.xml" value="0.2015625" />
@@ -55,6 +59,7 @@
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/layout/status.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/actions.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/bookmark.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/contact.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/first.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/firstpage.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/Monika/AndroidStudioProjects/WhatsUp/app/src/main/res/menu/home.xml" value="0.23645833333333333" />

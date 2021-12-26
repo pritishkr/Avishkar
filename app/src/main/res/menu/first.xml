@@ -11,5 +11,8 @@
     <item android:id="@+id/status"
         android:icon="@drawable/quiz"
         android:title="Status"></item>
+    <item android:id="@+id/quiz"
+        android:icon="@drawable/quiz"
+        android:title="Quiz"></item>
 
 </menu>

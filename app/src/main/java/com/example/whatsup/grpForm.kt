@@ -103,7 +103,7 @@ class grpForm : AppCompatActivity() {
                     }
                     Toast.makeText(this,"Group Formed",Toast.LENGTH_SHORT).show()
                     var intent=Intent(this,GroupChat::class.java)
-                    intent.putExtra("GroupUid",randomKey)
+                    intent.putExtra("GroupUid",randomKey.toString())
                     startActivity(intent)
                     finish()
                 }

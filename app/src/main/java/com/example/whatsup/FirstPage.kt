@@ -50,49 +50,68 @@ class FirstPage : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         database=FirebaseDatabase.getInstance().getReference()
         fauth= FirebaseAuth.getInstance()
-permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO)
-        database.child("Online_Status").child(fauth.currentUser!!.uid).setValue("Online")
-        database.child("Online_Status").child(fauth.currentUser!!.uid).onDisconnect().setValue("Offline")
-         friendsFragment=friendsFragment()
-         groupsFragment=GroupsFragment()
-         statusFragment=StatusFragment()
-        setCurrentFragment(friendsFragment)
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.friends ->
-                {
-                    setCurrentFragment(friendsFragment)
-                    searchingList=friendsFragment.friendList
-                    currentFragment=1
+permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO,android.Manifest.permission.READ_CONTACTS)
+            database.child("Online_Status").child(fauth.currentUser!!.uid).setValue("Online")
+            database.child("Online_Status").child(fauth.currentUser!!.uid).onDisconnect().setValue("Offline")
+        if(isPermissionGranted())
+        {
+            friendsFragment=friendsFragment()
+            groupsFragment=GroupsFragment()
+            statusFragment=StatusFragment()
+            setCurrentFragment(friendsFragment)
+            binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.friends ->
+                    {
+                        setCurrentFragment(friendsFragment)
+
+                        currentFragment=1
+                    }
+                    R.id.groups ->
+                    {
+                        setCurrentFragment(groupsFragment)
+
+                        currentFragment=2
+                    }
+                    R.id.status->
+                    {
+                        setCurrentFragment(statusFragment)
+
+                        currentFragment=3
+                    }
+                    R.id.quiz->
+                    {
+                        var intent=Intent(this,MainActivity::class.java)
+                        startActivity(intent)
+                    }
                 }
-                R.id.groups ->
-                {
-                    setCurrentFragment(groupsFragment)
-                    searchingListGroup=groupsFragment.grpList
-                    currentFragment=2
-                }
-                R.id.status->
-                {
-                    setCurrentFragment(statusFragment)
-                    searchingListStatus=statusFragment.statusList
-                    currentFragment=3
-                }
+                true
             }
-            true
         }
+        else
+        {
+            askPermission()
+        }
+        binding.camera.setOnClickListener {
+
+        }
+
     }
     private fun performSearch() {
         binding.friendsSearch.queryHint="Search Here.."
         binding.friendsSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if(currentFragment==1){
+                    searchingList=friendsFragment.friendList
                     search(query)
                 }
                 else if(currentFragment==2)
                 {
+                    searchingListGroup=groupsFragment.grpList
                     searchGroup(query)
                 }
                 else{
+                    searchingListStatus=statusFragment.statusList
                     searchStatus(query)
                 }
                 return true
@@ -194,7 +213,7 @@ permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permis
                 return true
             }
             R.id.settings -> {
-                var intent=Intent(this,FirstPage::class.java)
+                var intent=Intent(this,LeaderBoardFragment::class.java)
                 startActivity(intent)
                 return true
             }
@@ -224,6 +243,17 @@ permissions= arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permis
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+    private fun askPermission(){
+        ActivityCompat.requestPermissions(this,permissions,requestCode)
+    }
+    private fun isPermissionGranted():Boolean{
+        for(permission in permissions){
+            if(ActivityCompat.checkSelfPermission(this,permission)!=PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
     }
 
 
